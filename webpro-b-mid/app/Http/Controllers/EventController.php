@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -37,16 +43,16 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'event_name' => 'required',
-            'event_price' => 'required',
-            'event_start' => 'required',
-            'event_end' => 'required',
+        $user = Auth::user();
+        Event::create([
+            'event_organizer' => $user->id,
+            'event_name' => $request->event_name,
+            'event_price' => $request->event_price,
+            'event_start' => $request->event_start,
+            'event_end' => $request->event_end,
         ]);
 
-        Event::create($request->all());
-
-        return redirect()->route('event.index')->with('success', 'Event created successfully.');
+        return redirect()->route('my-events.index')->with('success', 'Event created successfully.');
     }
 
     /**
@@ -55,8 +61,9 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
+        $event = Event::where('event_id', $id)->first();
         return view('event.show', compact('event'));
     }
 
@@ -66,8 +73,9 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
+        $event = Event::where('event_id', $id)->first();
         return view('event.edit', compact('event'));
     }
 
@@ -78,16 +86,15 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'event_name' => 'required',
-            'event_price' => 'required',
-            'event_start' => 'required',
-            'event_end' => 'required',
+        Event::where('event_id', $id)->update([
+            'event_name' => $request->event_name,
+            'event_price' => $request->event_price,
+            'event_start' => $request->event_start,
+            'event_end' => $request->event_end,
         ]);
-        $event.update($request->all());
-        return redirect()->route('event.index')->with('success', 'Event updated successfully');
+        return redirect()->route('my-events.index')->with('success', 'Event updated successfully');
     }
 
     /**
@@ -96,9 +103,9 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        $event->delete();
-        return redirect()->route('event.index')->with('success', 'Event deleted successfully');
+        Event::where('event_id', $id)->delete();
+        return redirect()->route('my-events.index')->with('success', 'Event deleted successfully');
     }
 }
