@@ -14,9 +14,9 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->String('event_id')->unique();
-            $table->String('event_organizer');
-            $table->foreign('event_organizer')->references('email')->on('users')->onDelete('cascade');
+            $table->bigIncrements('event_id');
+            $table->bigInteger('event_organizer')->unsigned();
+            $table->foreign('event_organizer')->references('id')->on('users')->onDelete('cascade');
             $table->String('event_name');
             $table->String('event_price');
             $table->timestamp('event_start')->nullable();
