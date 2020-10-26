@@ -16,6 +16,8 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+                <a class = "btn btn-primary" href="{{route('profile')}}">MyProfile</a>
             </div>
         </div>
     </div>

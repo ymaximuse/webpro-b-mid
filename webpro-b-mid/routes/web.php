@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('my-tickets',[App\Http\Controllers\TicketController::class, 'myTicket'])->name('my-tickets');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
