@@ -7,6 +7,7 @@
             <thead class="text-left thead-dark">
                 <th>Code</th>
                 <th>Name</th>
+                <th>Place</th>
                 <!-- <th class="col-xl">Jawaban</th> -->
                 <th>Event Price</th>
                 <th>Event Start</th>
@@ -18,6 +19,7 @@
                 <tr class="text-left">
                     <td>{{$t->event_id}}</td>
                     <td>{{$t->event_name}}</td>
+                    <td>{{$t->event_place}}</td>
                     <td>{{$t->event_price}}</td>
                     <td>{{$t->event_start}}</td>
                     <td>{{$t->event_end}}</td>

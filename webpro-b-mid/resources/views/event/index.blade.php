@@ -13,17 +13,19 @@
             <table class="table table-bordered table-responsive-lg">
                 <tr>
                     <th>Event Name</th>
-                    <th>Price</th>
+                    <th>Event Place</th>
                     <th>Event Start</th>
                     <th>Event End</th>
+                    <th>Price</th>
                     <th colspan=2>Action</th>
                 </tr>
                 @foreach ($events as $event)
                     <tr>
                         <td>{{$event->event_name}}</td>
-                        <td>{{$event->event_price}}</td>
+                        <td>{{$event->event_place}}</td>
                         <td>{{$event->event_start}}</td>
                         <td>{{$event->event_end}}</td>
+                        <td>{{$event->event_price}}</td>
                         <?php
                         $user = Auth::user()->id;
                         $organizer = $event->event_organizer;

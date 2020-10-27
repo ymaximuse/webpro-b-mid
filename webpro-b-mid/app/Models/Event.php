@@ -8,7 +8,8 @@ use Illuminate\Support\Carbon;
 
 class Event extends Model
 {
-    protected $fillable = ['event_organizer', 'event_name', 'event_price', 'event_start', 'event_end'];
+    protected $fillable = ['event_organizer', 'event_name', 'event_price', 'event_start', 'event_end'
+                            , 'event_place', 'event_description'];
     use HasFactory;
 
     public function getEventStartAttribute($value)

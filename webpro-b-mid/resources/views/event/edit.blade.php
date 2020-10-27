@@ -16,6 +16,12 @@
                     </div>
                     <div>
                         <div class="form-group">
+                            <strong>Event Place:</strong>
+                            <input type="text" name="event_place" class="form-control" value="{{ $event->event_place }}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
                             <strong>Price:</strong>
                             <input type="text" name="event_price" class="form-control" value="{{ $event->event_price }}">
                         </div>
@@ -30,6 +36,12 @@
                         <div class="form-group">
                             <strong>Event End:</strong>
                             <input type="datetime-local" name="event_end" class="form-control" value="{{ $event->event_end }}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <strong>Event Description</strong>
+                            <textarea class="form-control" name="event_description" rows="3">{{ $event->event_description }}</textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

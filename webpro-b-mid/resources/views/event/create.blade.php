@@ -15,6 +15,12 @@
                     </div>
                     <div>
                         <div class="form-group">
+                            <strong>Event Place:</strong>
+                            <input type="text" name="event_place" class="form-control" placeholder="Event Place">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
                             <strong>Price:</strong>
                             <input type="text" name="event_price" class="form-control" placeholder="Event Price">
                         </div>
@@ -29,6 +35,12 @@
                         <div class="form-group">
                             <strong>Event End:</strong>
                             <input type="datetime-local" name="event_end" class="form-control" placeholder="Event End">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <strong>Event Description</strong>
+                            <textarea class="form-control" name="event_description" rows="3" placeholder="Event Description"></textarea>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

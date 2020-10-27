@@ -18,7 +18,9 @@ class CreateEventsTable extends Migration
             $table->bigInteger('event_organizer')->unsigned();
             $table->foreign('event_organizer')->references('id')->on('users')->onDelete('cascade');
             $table->String('event_name');
-            $table->String('event_price');
+            $table->bigInteger('event_price');
+            $table->String('event_place');
+            $table->String('event_description');
             $table->timestamp('event_start')->nullable();
             $table->timestamp('event_end')->nullable();
             $table->timestamps();

@@ -9,6 +9,7 @@
                 <th>Name</th>
                 <!-- <th class="col-xl">Jawaban</th> -->
                 <th>Purchase Date</th>
+                <th>Used</th>
             </thead>
             <tbody>
                 @foreach($my_ticket as $ticket => $t)
@@ -16,6 +17,7 @@
                     <td>{{$t->ticket_id}}</td>
                     <td>{{$t->event_name}}</td>
                     <td>{{$t->updated_at}}</td>
+                    <td>{{$t->used}}</td>
                 </tr>
                 @endforeach
             </tbody>

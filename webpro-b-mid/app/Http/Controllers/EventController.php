@@ -48,9 +48,11 @@ class EventController extends Controller
         Event::create([
             'event_organizer' => $user->id,
             'event_name' => $request->event_name,
+            'event_place' => $request->event_place,
             'event_price' => $request->event_price,
             'event_start' => $request->event_start,
             'event_end' => $request->event_end,
+            'event_description' => $request->event_description,
         ]);
 
         return redirect()->route('my-events.index')->with('success', 'Event created successfully.');
@@ -112,6 +114,8 @@ class EventController extends Controller
         Event::where('event_id', $id)->update([
             'event_name' => $request->event_name,
             'event_price' => $request->event_price,
+            'event_place' => $request->event_place,
+            'event_description' => $request->event_description,
             'event_start' => $request->event_start,
             'event_end' => $request->event_end,
         ]);

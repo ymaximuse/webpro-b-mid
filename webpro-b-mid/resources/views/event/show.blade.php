@@ -13,15 +13,17 @@
             <table class="table table-bordered table-responsive-lg">
                 <tr>
                     <th>Event Name</th>
-                    <th>Price</th>
+                    <th>Place</th>
                     <th>Event Start</th>
                     <th>Event End</th>
+                    <th>Price</th>
                 </tr>
                 <tr>
                     <td>{{$event->event_name}}</td>
-                    <td>{{$event->event_price}}</td>
+                    <td>{{$event->event_place}</td>
                     <td>{{$event->event_start}}</td>
                     <td>{{$event->event_end}}</td>
+                    <td>{{$event->event_price}}</td>
                     <td>
                         <form action="{{ route('my-events.edit', $event->event_id) }}" method="GET">
                             @csrf
