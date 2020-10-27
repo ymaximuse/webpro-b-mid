@@ -39,14 +39,33 @@ class TicketController extends Controller
         return view('ticket.myTicket', compact('my_ticket'));
     }
     
-    // public function mark(Request $request, $ticket_id, $event_id)
-    // {
-    //     Event::where('ticket_id', $id)->update([
-    //         'event_name' => $request->event_name,
-    //         'event_price' => $request->event_price,
-    //         'event_start' => $request->event_start,
-    //         'event_end' => $request->event_end,
-    //     ]);
-    //     return redirect()->route('my-events.index')->with('success', 'Event updated successfully');
-    // }
+    public function markTicket(Request $request, $id)
+    {
+        $real_event_id = DB::table('tickets')
+                            ->select('tickets.event_id')
+                            ->where('tickets.ticket_id', $request->ticket_id)
+                            ->value('event_id');
+        if($real_event_id == $id)
+        {
+            $used = DB::table('tickets')
+                        ->select('tickets.used')
+                        ->where('tickets.ticket_id', $request->ticket_id)
+                        ->value('used');
+            if($used == 0)
+            {
+                Ticket::where('ticket_id', $request->ticket_id)->update([
+                    'used' => true,
+                ]);
+                return redirect()->route('ticket-check', $id)->with('success', 'Ticket checked successfully');
+            }
+            else return redirect()->route('ticket-check', $id)->with('error', 'Ticket with that ID is already used');
+        }
+        else return redirect()->route('ticket-check', $id)->with('error', 'Ticket ID invalid');
+    }
+
+    public function ticketCheck($id)
+    {
+        $event = Event::where('event_id', $id)->first();
+        return view('ticket.mark', compact('event'));
+    }
 }

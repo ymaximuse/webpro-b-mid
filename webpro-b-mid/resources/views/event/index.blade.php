@@ -17,7 +17,7 @@
                     <th>Event Start</th>
                     <th>Event End</th>
                     <th>Price</th>
-                    <th colspan=2>Action</th>
+                    <th colspan=3>Action</th>
                 </tr>
                 @foreach ($events as $event)
                     <tr>
@@ -48,14 +48,17 @@
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('ticket-check', ['id' => $event->event_id]) }}">
+                                    Check
+                                </a>
+                            </td>
                         <?php
                         } else {
                         ?>
-                            <td colspan=2>
+                            <td colspan=3>
                                 <a class="btn btn-primary" href="{{ route('buy-tickets', ['id' => $event->event_id]) }}">
                                     Buy Ticket
-                                    <!-- @csrf -->
-                                    <!-- <button type="submit" class="btn btn-primary">Buy Ticket</button> -->
                                 </a>
                             </td>
                         <?php
