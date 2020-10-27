@@ -23,7 +23,10 @@ class TicketController extends Controller
             'ticket_owner' => $user->id,
             'used' => false
         ]);
+        // $ticket = Ticket::where('event_id', $id)->first();
+        // return view('event.edit', compact('event'));
         return redirect()->route('my-tickets');
+        // return view('ticket.buyTicket', compact('my-ticket'));
     }
 
     public function myTicket(){
@@ -35,4 +38,15 @@ class TicketController extends Controller
         $my_ticket = $my_ticket->get();
         return view('ticket.myTicket', compact('my_ticket'));
     }
+    
+    // public function mark(Request $request, $ticket_id, $event_id)
+    // {
+    //     Event::where('ticket_id', $id)->update([
+    //         'event_name' => $request->event_name,
+    //         'event_price' => $request->event_price,
+    //         'event_start' => $request->event_start,
+    //         'event_end' => $request->event_end,
+    //     ]);
+    //     return redirect()->route('my-events.index')->with('success', 'Event updated successfully');
+    // }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -66,6 +67,26 @@ class EventController extends Controller
         $event = Event::where('event_id', $id)->first();
         return view('event.show', compact('event'));
     }
+
+    public function myEvent(){
+        $user = Auth::user();
+        $my_event = DB::table('events')
+                        ->join('users', 'events.event_organizer','=','users.id')
+                        ->select('events.*', 'events.event_name')
+                        ->where('events.event_organizer', $user->id);
+        $my_event = $my_event->get();
+        return view('event.myEvent', compact('my_event'));
+    }
+
+    // public function notMyEvent(){
+    //     $user = Auth::user();
+    //     $not_my_event = DB::table('events')
+    //                     ->join('users', 'events.event_organizer','=','users.id')
+    //                     ->select('events.*', 'events.event_name')
+    //                     ->where('events.event_organizer', '!=', $user->id);
+    //     $not_my_event = $not_my_event->get();
+    //     return view('event\notMyEvent', compact('not_my_event'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

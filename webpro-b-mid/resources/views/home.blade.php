@@ -17,7 +17,9 @@
                     {{ __('You are logged in!') }}
                 </div>
 
-                <a class = "btn btn-primary" href="{{route('profile')}}">MyProfile</a>
+                <a class = "btn btn-primary" href="{{route('profile')}}">My Profile</a>
+                <a class = "btn btn-primary" href="{{route('my-events.index')}}">Events</a>
+                <a class = "btn btn-primary" href="{{route('my-events.create')}}">Create new event</a>
             </div>
         </div>
     </div>

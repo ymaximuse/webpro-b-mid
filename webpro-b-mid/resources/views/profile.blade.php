@@ -6,5 +6,6 @@
     <h1>{{Auth::user()->email}}</h1>
 
     <a class = "btn btn-primary" href="{{'my-tickets'}}">My Tickets</a>
+    <a class = "btn btn-primary" href="{{'my-events'}}">All Events</a>
 </div>
 @endsection

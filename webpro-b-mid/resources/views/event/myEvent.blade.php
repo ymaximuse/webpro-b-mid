@@ -8,21 +8,28 @@
                 <th>Code</th>
                 <th>Name</th>
                 <!-- <th class="col-xl">Jawaban</th> -->
-                <th>Purchase Date</th>
+                <th>Event Price</th>
+                <th>Event Start</th>
+                <th>Event End</th>
+                <!-- <th>Check Attendance</th> -->
             </thead>
             <tbody>
-                @foreach($my_ticket as $ticket => $t)
+                @foreach($my_event as $event => $t)
                 <tr class="text-left">
-                    <td>{{$t->ticket_id}}</td>
+                    <td>{{$t->event_id}}</td>
                     <td>{{$t->event_name}}</td>
-                    <td>{{$t->updated_at}}</td>
+                    <td>{{$t->event_price}}</td>
+                    <td>{{$t->event_start}}</td>
+                    <td>{{$t->event_end}}</td>
+                    <!-- <td>
+                        <a href="{{ route('mark-tickets', ['id' => $event->event_id]) }}">Check</a>
+                    </td> -->
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 
-    <!-- <a class="btn btn-primary" href="{{'my-tickets'}}">My Tickets</a> -->
     <a class="btn btn-primary" href="{{'my-events'}}">All Events</a>
 </div>
 @endsection
