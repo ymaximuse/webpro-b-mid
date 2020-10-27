@@ -26,6 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('my-tickets',[App\Http\Controllers\TicketController::class, 'myTicket'])->name('my-tickets');
 Route::get('buy-tickets/{id}',[App\Http\Controllers\TicketController::class, 'buyTicket'])->name('buy-tickets');
+Route::get('event-detail/{id}',[App\Http\Controllers\EventController::class, 'show'])->name('event-detail');
 // Route::get('mark-tickets/{id}',[App\Http\Controllers\TicketController::class, 'markTicket'])->name('mark-tickets');
 // Route::get('/events',[App\Http\Controllers\EventController::class, 'myEvent'])->name('events');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');

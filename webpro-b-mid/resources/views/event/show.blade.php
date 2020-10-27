@@ -1,5 +1,9 @@
-@extends('layouts.app')
 
+@php
+use App\Http\Controllers\EventController;
+
+@endphp
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,37 +13,35 @@
                     <p>{{$message}}</p>
                 </div>
             @endif
-            
+            <h2>{{$event->event_name}}</h2>
             <table class="table table-bordered table-responsive-lg">
                 <tr>
-                    <th>Event Name</th>
-                    <th>Place</th>
-                    <th>Event Start</th>
-                    <th>Event End</th>
-                    <th>Price</th>
+                    <th>Event Organizer</th>
+                    <td>
+                        <?php
+                            echo EventController::eventOrganizer($event->event_id);
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td>{{$event->event_name}}</td>
-                    <td>{{$event->event_place}</td>
-                    <td>{{$event->event_start}}</td>
-                    <td>{{$event->event_end}}</td>
+                    <th>Event Place</th>
+                    <td>{{$event->event_place}}</td>
+                </tr>
+                <tr>
+                    <th>Event Time</th>
+                    <td>{{$event->event_start}} - {{$event->event_end}}</td>
+                </tr>
+                    <th>Event Price</th>
                     <td>{{$event->event_price}}</td>
-                    <td>
-                        <form action="{{ route('my-events.edit', $event->event_id) }}" method="GET">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{ route('my-events.destroy', $event->event_id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
+                </tr>
+                </tr>
+                    <th>Event Description</th>
+                    <td>{{$event->event_description}}</td>
                 </tr>
             </table>
-
+            
+            <a class="btn btn-primary" href="{{route('my-events.index')}}">Back</a>
+            
         </div>
     </div>
 </div>

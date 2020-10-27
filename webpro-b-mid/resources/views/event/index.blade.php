@@ -21,7 +21,11 @@
                 </tr>
                 @foreach ($events as $event)
                     <tr>
-                        <td>{{$event->event_name}}</td>
+                        <td>
+                            <a href="{{ route('event-detail', $event->event_id) }}">
+                                {{$event->event_name}}
+                            </a>
+                        </td>
                         <td>{{$event->event_place}}</td>
                         <td>{{$event->event_start}}</td>
                         <td>{{$event->event_end}}</td>
