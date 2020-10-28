@@ -67,17 +67,12 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::where('event_id', $id)->first();
-        return view('event.show', compact('event'));
-    }
-
-    public static function eventOrganizer($id){
         $organizer = DB::table('events')
                         ->join('users', 'events.event_organizer','=','users.id')
                         ->select('users.name')
-                        ->where('events.event_id', $id);
-        $organizer = $organizer->value('name');
-        return $organizer;
+                        ->where('events.event_id', $id)->value('name');
+        $event = Event::where('event_id', $id)->first();
+        return view('event.show', compact(['event', 'organizer']));
     }
 
     /**

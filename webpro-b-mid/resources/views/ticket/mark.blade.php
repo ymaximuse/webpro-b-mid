@@ -19,15 +19,15 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div>
+                    <div class="w-100">
                         <div class="form-group">
-                            <strong>Ticket ID:</strong>
+                            <strong class="p-2">Ticket ID:</strong>
                             <input type="text" name="ticket_id" class="form-control" placeholder="Ticket ID">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <a class="btn btn-primary" href="{{ route('my-events.index') }}">Back</a>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a class="btn btn-danger px-5" href="{{ route('my-events.show', $event->event_id) }}">Back</a>
+                        <button type="submit" class="btn btn-primary px-5">Submit</button>
                     </div>
                 </div>
             </form>

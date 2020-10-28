@@ -18,9 +18,7 @@ use App\Http\Controllers\EventController;
                 <tr>
                     <th>Event Organizer</th>
                     <td>
-                        <?php
-                            echo EventController::eventOrganizer($event->event_id);
-                        ?>
+                        {{ $organizer }}
                     </td>
                 </tr>
                 <tr>
@@ -40,6 +38,7 @@ use App\Http\Controllers\EventController;
                 </tr>
             </table>
             
+            <a class="btn btn-success" href="{{ route('ticket-check', $event->event_id) }}">Check Tickets</a>
             <a class="btn btn-primary" href="{{route('my-events.index')}}">Back</a>
             
         </div>
