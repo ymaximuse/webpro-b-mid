@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{$message}}</p>
@@ -38,20 +38,15 @@
                             <td>
                                 <form action="{{ route('my-events.edit', $event->event_id) }}" method="GET">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                    <button type="submit" class="btn btn-primary w-100">Edit</button>
                                 </form>
                             </td>
                             <td>
                                 <form action="{{ route('my-events.destroy', $event->event_id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger w-100">Delete</button>
                                 </form>
-                            </td>
-                            <td>
-                                <a class="btn btn-primary" href="{{ route('ticket-check', ['id' => $event->event_id]) }}">
-                                    Check
-                                </a>
                             </td>
                         <?php
                         } else {

@@ -25,6 +25,6 @@
     </div>
 
     <!-- <a class="btn btn-primary" href="{{'my-tickets'}}">My Tickets</a> -->
-    <a class="btn btn-primary" href="{{'my-events'}}">All Events</a>
+    <a class="btn btn-primary" href="{{'my-events'}}">My Events</a>
 </div>
 @endsection

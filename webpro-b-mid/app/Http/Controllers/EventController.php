@@ -21,7 +21,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::latest()->paginate(5);
+        $user = Auth::user();
+        $events = Event::where('event_organizer', $user->id)->latest()->paginate(5);
 
         return view('event.index', compact('events'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -78,26 +79,6 @@ class EventController extends Controller
         $organizer = $organizer->value('name');
         return $organizer;
     }
-
-    public function myEvent(){
-        $user = Auth::user();
-        $my_event = DB::table('events')
-                        ->join('users', 'events.event_organizer','=','users.id')
-                        ->select('events.*', 'events.event_name')
-                        ->where('events.event_organizer', $user->id);
-        $my_event = $my_event->get();
-        return view('event.myEvent', compact('my_event'));
-    }
-
-    // public function notMyEvent(){
-    //     $user = Auth::user();
-    //     $not_my_event = DB::table('events')
-    //                     ->join('users', 'events.event_organizer','=','users.id')
-    //                     ->select('events.*', 'events.event_name')
-    //                     ->where('events.event_organizer', '!=', $user->id);
-    //     $not_my_event = $not_my_event->get();
-    //     return view('event\notMyEvent', compact('not_my_event'));
-    // }
 
     /**
      * Show the form for editing the specified resource.
