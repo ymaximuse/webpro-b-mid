@@ -15,6 +15,7 @@
                     <p>{{$message}}</p>
                 </div>
             @endif
+            <h2>{{$event->event_name}}</h2>
             <form action="{{ route('mark-ticket', $event->event_id) }}" method="GET">
                 @csrf
                 @method('PUT')
