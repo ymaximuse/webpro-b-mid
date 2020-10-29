@@ -64,8 +64,7 @@
             </table>
             
             {{ $events->links() }}
-            <!-- <a class="btn btn-primary" href="{{'profile'}}">My Profile</a> -->
-            <a class="btn btn-primary" href="{{'home'}}">Home</a>
+            <a class="btn btn-danger px-5" href="{{ url()->previous() }}">Back</a>
             
         </div>
     </div>
