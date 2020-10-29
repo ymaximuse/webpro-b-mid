@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-right pr-0">
-                                <a class="btn btn-danger px-4" href="{{ url('/home') }}">Back</a>
+                                <a class="btn btn-danger px-4" href="{{ route('home') }}">Back</a>
                                 <button type="submit" class="btn btn-primary px-5 ml-3">Submit</button>
                             </div>
                         </div>

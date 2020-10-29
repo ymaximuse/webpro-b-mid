@@ -30,4 +30,6 @@ Route::get('ticket-check/{id}',[App\Http\Controllers\TicketController::class, 't
 Route::get('mark-ticket/{id}',[App\Http\Controllers\TicketController::class, 'markTicket'])->name('mark-ticket');
 Route::get('event-detail/{id}',[App\Http\Controllers\EventController::class, 'show'])->name('event-detail');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-Route::resource('/my-events', EventController::class);
+Route::resource('/my-events', EventController::class, [
+    'except' => [ 'show' ]
+]);
