@@ -64,7 +64,7 @@
             </table>
             
             {{ $events->links() }}
-            <a class="btn btn-danger px-5" href="{{ url()->previous() }}">Back</a>
+            <a class="btn btn-danger px-5" href="{{ route('home') }}">Home</a>
             
         </div>
     </div>
