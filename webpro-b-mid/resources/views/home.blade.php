@@ -4,21 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <!-- <div class="card my-2">
-                <div class="card-header">{{ __('Hello') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div> -->
             <div style="text-align:center; font-size:30px;">
-                <div>Welcome to namaapp!</div>
+                <div>Welcome to events.co!</div>
                 <span style="white-space: pre-line"></span>
                 <div>What event do you want to attend?</div>
             </div>
