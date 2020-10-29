@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card my-2">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            <!-- <div class="card my-2">
+                <div class="card-header">{{ __('Hello') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,31 +16,36 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+            </div> -->
+            <div style="text-align:center; font-size:30px;">
+                <div>Welcome to namaapp!</div>
+                <span style="white-space: pre-line"></span>
+                <div>What event do you want to attend?</div>
             </div>
 
-            <div class="card my-2">
-
-                <div class="card-header">{{ __('Actions') }}</div>
-                <div class="card-body">
-                <a class = "btn btn-primary" href="{{route('profile')}}">My Profile</a>
-                <a class = "btn btn-primary" href="{{route('my-tickets')}}">My Tickets</a>
-                <a class = "btn btn-primary" href="{{route('my-events.index')}}">My Events</a>
-                <a class = "btn btn-primary" href="{{route('my-events.create')}}">Create new event</a>
+            <div>
+                <div class="card-header" style="text-align:center; margin-top:20px; font-size:20px;">{{ __('Actions') }}</div>
+                <div class="card-body" style="text-align:center;">
+                    <a class="btn btn-primary" href="{{route('profile')}}">My Profile</a>
+                    <a class="btn btn-primary" href="{{route('my-tickets')}}">My Tickets</a>
+                    <a class="btn btn-primary" href="{{route('my-events.index')}}">My Events</a>
+                    <a class="btn btn-primary" href="{{route('my-events.create')}}">Create new event</a>
                 </div>
             </div>
+            
             <div class="card my-2">
-                <div class="card-header">{{ __('All Events') }}</div>
+                <div class="card-header" style="text-align:center;  font-size:20px;">{{ __('All Events') }}</div>
                 <div class="card-body">
-                    <table class="table table-bordered table-responsive-lg">
-                    <tr>
-                        <th>Event Name</th>
-                        <th>Event Place</th>
-                        <th>Event Start</th>
-                        <th>Event End</th>
-                        <th>Price</th>
-                        <th colspan=3>Action</th>
-                    </tr>
-                    @foreach ($events as $event)
+                    <table class="table table-bordered table-responsive-lg" style="text-align:center;">
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Event Place</th>
+                            <th>Event Start</th>
+                            <th>Event End</th>
+                            <th>Price</th>
+                            <th colspan=3>Action</th>
+                        </tr>
+                        @foreach ($events as $event)
                         <tr>
                             <td>
                                 <a href="{{ route('event-detail', $event->event_id) }}">
@@ -54,8 +59,7 @@
                             <?php
                             $user = Auth::user()->id;
                             $organizer = $event->event_organizer;
-                            if($user == $organizer)
-                            {?>
+                            if ($user == $organizer) { ?>
                                 <td>
                                     <form action="{{ route('my-events.edit', $event->event_id) }}" method="GET">
                                         @csrf
@@ -82,10 +86,10 @@
                             }
                             ?>
                         </tr>
-                    @endforeach
-                </table>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection
