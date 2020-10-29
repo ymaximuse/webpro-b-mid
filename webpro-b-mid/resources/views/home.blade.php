@@ -24,12 +24,12 @@
             </div>
 
             <div>
-                <div class="card-header" style="text-align:center; margin-top:20px; font-size:20px;">{{ __('Actions') }}</div>
-                <div class="card-body" style="text-align:center;">
-                    <a class="btn btn-primary" href="{{route('profile')}}">My Profile</a>
-                    <a class="btn btn-primary" href="{{route('my-tickets')}}">My Tickets</a>
-                    <a class="btn btn-primary" href="{{route('my-events.index')}}">My Events</a>
-                    <a class="btn btn-primary" href="{{route('my-events.create')}}">Create new event</a>
+                <div class="card-header text-center" style="margin-top:20px; font-size:20px;">{{ __('Actions') }}</div>
+                <div class="card-body text-center d-flex flex-row justify-content-between w-75 mx-auto">
+                    <a class="btn btn-success px-4" href="{{route('profile')}}">My Profile</a>
+                    <a class="btn btn-success px-4" href="{{route('my-tickets')}}">My Tickets</a>
+                    <a class="btn btn-success px-4" href="{{route('my-events.index')}}">My Events</a>
+                    <a class="btn btn-success px-4" href="{{route('my-events.create')}}">Create new event</a>
                 </div>
             </div>
             
