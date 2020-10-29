@@ -65,7 +65,16 @@ class TicketController extends Controller
 
     public function ticketCheck($id)
     {
-        $event = Event::where('event_id', $id)->first();
-        return view('ticket.mark', compact('event'));
+        $user = Auth::user()->id;
+        $event_org = DB::table('events')
+                            ->select('events.event_organizer')
+                            ->where('events.event_id', $id)
+                            ->value('event_organizer');
+        if($user == $event_org)
+        {
+            $event = Event::where('event_id', $id)->first();
+            return view('ticket.mark', compact('event'));
+        }
+        else return redirect()->route('event-detail', $id)->with('error', 'Unauthorized access');
     }
 }

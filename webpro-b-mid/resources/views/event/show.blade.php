@@ -13,6 +13,11 @@ use App\Http\Controllers\EventController;
                     <p>{{$message}}</p>
                 </div>
             @endif
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger">
+                    <p>{{$message}}</p>
+                </div>
+            @endif
             <h2>{{$event->event_name}}</h2>
             <table class="table table-bordered table-responsive-lg">
                 <tr>
