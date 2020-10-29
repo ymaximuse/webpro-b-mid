@@ -10,8 +10,8 @@
                 </div>
             @endif
             
-            <table class="table table-bordered table-responsive-lg">
-                <tr>
+            <table class="table table-bordered table-responsive-lg text-center">
+                <tr class="table-info">
                     <th>Event Name</th>
                     <th>Event Place</th>
                     <th>Event Start</th>
