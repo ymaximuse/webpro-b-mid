@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <a class="btn btn-danger px-5" href="{{ route('my-events.show', $event->event_id) }}">Back</a>
+                        <a class="btn btn-danger px-5" href="{{ route('event-detail', $event->event_id) }}">Back</a>
                         <button type="submit" class="btn btn-primary px-5">Submit</button>
                     </div>
                 </div>
