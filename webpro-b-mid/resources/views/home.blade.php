@@ -37,14 +37,18 @@
                 <div class="card-header" style="text-align:center;  font-size:20px;">{{ __('All Events') }}</div>
                 <div class="card-body">
                     <table class="table table-bordered table-responsive-lg" style="text-align:center;">
-                        <tr>
-                            <th>Event Name</th>
-                            <th>Event Place</th>
-                            <th>Event Start</th>
-                            <th>Event End</th>
-                            <th>Price</th>
-                            <th colspan=3>Action</th>
-                        </tr>
+                        <thead class="table-info">
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Event Place</th>
+                                <th>Event Start</th>
+                                <th>Event End</th>
+                                <th>Price</th>
+                                <th colspan=3>Action</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
                         @foreach ($events as $event)
                         <tr>
                             <td>
@@ -79,7 +83,7 @@
                                 <td colspan=2>
                                     <form action="{{ route('buy-tickets', ['id' => $event->event_id]) }}" method="GET">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary w-100">Buy Ticket</button>
+                                        <button type="submit" class="btn btn-success w-100">Buy Ticket</button>
                                     </form>
                                 </td>
                             <?php
@@ -87,6 +91,7 @@
                             ?>
                         </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
