@@ -33,7 +33,7 @@ class TicketController extends Controller
         $user = Auth::user();
         $my_ticket = DB::table('tickets')
                         ->join('events', 'tickets.event_id','=','events.event_id')
-                        ->select('tickets.*', 'events.event_name')
+                        ->select('tickets.*', 'events.event_name', 'events.event_start')
                         ->where('tickets.ticket_owner', $user->id);
         $my_ticket = $my_ticket->get();
         return view('ticket.myTicket', compact('my_ticket'));
